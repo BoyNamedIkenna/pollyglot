@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+
+body {
+  display: flex;
+  justify-content: center;    
+  min-height: 100vh;       
+  margin: 0;    
+  padding: 0; 
+  background-color: #F5F5F5;          
+}
+
+
+.app-container {
+    margin-top: 50px;
+    background-color: #FFFFFF;
+    padding-bottom: 20px;
+}
