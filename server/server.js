@@ -9,7 +9,7 @@ const client = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
 
-app.use(cors());
+app.use(cors({ origin: process.env.FRONTEND_URL }));
 app.use(express.json());
 
 app.post("/api/translate", async (req, res) => {

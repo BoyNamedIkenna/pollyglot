@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { Send, Loader2, RotateCw } from "lucide-react";
 
 function App() {
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const [messages, setMessages] = useState<{ role: "user" | "assistant", text: string, failed?: boolean }[]>([]);
   const [inputText, setInputText] = useState<string>("");
   const [selectedLanguage, setSelectedLanguage] = useState<'French' | 'Spanish' | 'Japanese'>('French');
@@ -14,7 +16,7 @@ function App() {
     setStatus('loading')
     setMessages(prev => [...prev, { role: "user", text: inputText }])
     try {
-      const response = await fetch('http://localhost:3000/api/translate', {
+      const response = await fetch(`${API_URL}/api/translate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -49,7 +51,7 @@ function App() {
       setStatus('loading');
       setRetryingIndex(index)
       try {
-        const response = await fetch('http://localhost:3000/api/translate', {
+        const response = await fetch(`${API_URL}/api/translate`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
